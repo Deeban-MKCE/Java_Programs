@@ -1,0 +1,200 @@
+import java.util.*;
+
+public class NEWS 
+{
+	public static void main(String[] args)
+	{
+		int X = 3;
+		int Y = 3;
+		String Pos = "1-1-S";
+		String Res = "r L M L l M r";
+		String Out = Validate(X, Y, Pos, Res);
+		System.out.println("Result "+ Out);
+	}
+	public static String Validate(int input1, int input2, String input3, String input4)
+	{
+		String Pos[] = input3.split("-");
+		int X = Integer.valueOf(Pos[0]);
+		int Y = Integer.valueOf(Pos[1]);
+		String Dir = Pos[2];
+		String a[] = input4.split(" ");
+		int i;
+		String Res="";
+		String Out="";
+		for(i=0;i<a.length;i++)
+		{
+			if(Dir.equals("N"))
+			{
+				if(a[i].equals("R"))
+					Dir = "E";
+				else if(a[i].equals("r"))
+					Dir = "NE";
+				else if(a[i].equals("L"))
+					Dir = "W";
+				else if(a[i].equals("l"))
+					Dir = "NW";
+				else
+				{
+					Y = Y + 1;
+					if(Y>input2)
+					{
+						Y = Y - 1;
+						Res = "-ER";
+					}
+				}
+			}
+			else if(Dir.equals("S"))
+			{
+				if(a[i].equals("R"))
+					Dir = "W";
+				else if(a[i].equals("r"))
+					Dir = "SW";
+				else if(a[i].equals("L"))
+					Dir = "E";
+				else if(a[i].equals("l"))
+					Dir = "SE";
+				else
+				{
+					Y = Y - 1;
+					if(Y<0)
+					{
+						Y = Y + 1;
+						Res = "-ER";
+					}					
+				}
+			}
+			else if(Dir.equals("E"))
+			{
+				if(a[i].equals("R"))
+					Dir = "S";
+				else if(a[i].equals("r"))
+					Dir = "SE";
+				else if(a[i].equals("L"))
+					Dir = "N";
+				else if(a[i].equals("r"))
+					Dir = "NE";
+				else
+				{
+					X = X + 1;
+					if(X>input1)
+					{
+						X = X - 1;
+						Res = "-ER";
+					}					
+				}
+			}
+			else if(Dir.equals("W"))
+			{
+				if(a[i].equals("R"))
+					Dir = "N";
+				else if(a[i].equals("r"))
+					Dir = "NW";
+				else if(a[i].equals("L"))
+					Dir = "S";
+				else if(a[i].equals("r"))
+					Dir = "SW";
+				else
+				{
+					X = X - 1;
+					if(X<0)
+					{
+						X = X + 1;
+						Res = "-ER";
+					}					
+				}				
+			}
+			else if(Dir.equals("NW"))
+			{
+				if(a[i].equals("R"))
+					Dir = "NE";
+				else if(a[i].equals("r"))
+					Dir = "N";
+				else if(a[i].equals("L"))
+					Dir = "SW";
+				else if(a[i].equals("l"))
+					Dir = "W";
+				else
+				{
+					X = X - 1;
+					Y = Y + 1;
+					if(X<0 || Y>input2)
+					{
+						X = X + 1;
+						Y = Y - 1;
+						Res = "-ER";
+					}					
+				}				
+			}
+			else if(Dir.equals("NE"))
+			{
+				if(a[i].equals("R"))
+					Dir = "SE";
+				else if(a[i].equals("r"))
+					Dir = "E";
+				else if(a[i].equals("L"))
+					Dir = "NW";
+				else if(a[i].equals("l"))
+					Dir = "N";
+				else
+				{
+					X = X + 1;
+					Y = Y + 1;
+					if(X>input1 || Y>input2)
+					{
+						X = X - 1;
+						Y = Y - 1;
+						Res = "-ER";
+					}					
+				}				
+			}
+			else if(Dir.equals("SW"))
+			{
+				if(a[i].equals("R"))
+					Dir = "NW";
+				else if(a[i].equals("r"))
+					Dir = "W";
+				else if(a[i].equals("L"))
+					Dir = "SE";
+				else if(a[i].equals("l"))
+					Dir = "S";
+				else
+				{
+					X = X - 1;
+					Y = Y - 1;
+					if(X<0 || Y<0)
+					{
+						X = X + 1;
+						Y = Y + 1;
+						Res = "-ER";
+					}					
+				}				
+			}
+			else if(Dir.equals("SE"))
+			{
+				if(a[i].equals("R"))
+					Dir = "SW";
+				else if(a[i].equals("r"))
+					Dir = "S";
+				else if(a[i].equals("L"))
+					Dir = "NE";
+				else if(a[i].equals("l"))
+					Dir = "E";
+				else
+				{
+					X = X + 1;
+					Y = Y - 1;
+					if(X>input1 || Y<0)
+					{
+						X = X - 1;
+						Y = Y + 1;
+						Res = "-ER";
+					}					
+				}			
+			}
+		}
+		String CX = String.valueOf(X);
+		String CY = String.valueOf(Y);
+		Out = Out + CX + "-" + CY + "-" + Dir + Res;
+		return Out;
+	}
+}

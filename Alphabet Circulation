@@ -1,0 +1,22 @@
+import java.util.*;
+public class Alphabets
+{
+public static void main(String[] args)
+{
+Scanner SC = new Scanner(System.in);
+String S[] = SC.nextLine().split(" ");
+char Alpha = S[0].charAt(0);
+int Count = Integer.valueOf(S[1]);
+int i;
+for(i=0;i<Count;i++)
+{
+if(Alpha == 'Z')
+Alpha = 'A';
+else if(Alpha == 'z')
+Alpha = 'a';
+else
+Alpha = (char)(Alpha + 1);
+}
+System.out.println(Alpha);
+}
+}

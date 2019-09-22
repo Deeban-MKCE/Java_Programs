@@ -1,5 +1,5 @@
 import java.util.*;
-public class Sequence 
+public class Main
 {
 	public static void main(String[] args) 
 	{
@@ -9,32 +9,26 @@ public class Sequence
 		int num[] = {0,11,23,45,4,5,6};
 		int Temp_Num[] = num.clone();
 		Arrays.sort(num);
-		int temp[] = new int[100];
-		int i,diff = 0,Count = 0,k = 1;
+		int temp[] = new int[3];
+		int i,Count = 0,k = 1;
 		for(i=0;i<n-1;i++)
 		{
-			diff = num[i+1] - num[i];
-			if(diff == 1)
-			{
-				Count = Count + 1;
-				if(Count==2)
-				{
-					temp[k] = num[i];
-					k++;
-				}
-			}
-			else
-			{
-				temp[0] = num[i-Count];
-				temp[k] = num[i];
-				if(Count == 2)
-					break;
-				Count = 0;
-			}
+			if(num[i]+1 == num[i+1] && num[i]+2 == num[i+2])
+			    {
+			        temp[0] = num[i];
+			        temp[1] = num[i+1];
+			        temp[2] = num[i+2];
+			        Count = 1;
+			        break;
+			    }
 		}
 		int j;
 		String Res = "";
-		for(i=Count;i>=0;i--)
+		if(Count == 0)
+		    Res = "None";
+		else
+		{
+		for(i=2;i>=0;i--)
 		{
 			for(j=0;j<n;j++)
 			{
@@ -49,5 +43,6 @@ public class Sequence
 			}
 		}
 		System.out.println(Res);
+		}
 	}
 }

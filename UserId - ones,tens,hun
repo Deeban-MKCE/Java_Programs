@@ -1,0 +1,37 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		int in1 = 2531;
+		int in2 = 4562;
+		int in3 = 2472;
+		int i,umin = 9,tmin = 9, thmax = 0,hmax= 0;
+		int arr[] = {in1,in2,in3};
+		int unit, hun, ten, thous;
+		for(i=0;i<3;i++)
+		{
+		    unit = arr[i]%10;
+		    if(umin>unit)
+		        umin = unit;
+		    ten = (arr[i]/10)%10;
+		    if(tmin>ten)
+		        tmin = ten;
+		    hun = (arr[i]/100)%10;
+		    if(hmax<hun)
+		        hmax = hun;
+		    thous = (arr[i]/1000)%10;
+		    if(thmax<thous)
+		        thmax = thous;
+		}
+		int res = 0;
+		res = res + umin + tmin + hmax + thmax;
+		if(res>9)
+		{
+		    if(res%9 == 0)
+		        res = 9;
+		    else
+		        res = res%9;
+		}
+		System.out.println(res);
+	}
+}

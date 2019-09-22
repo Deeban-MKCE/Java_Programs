@@ -1,0 +1,18 @@
+import java.util.*;
+public class Perfect_Square
+{
+public static void main(String[] args)
+{
+Scanner Sc = new Scanner(System.in);
+int N = Sc.nextInt();
+int i,Num,C =0;
+for(i=0;i<N;i++)
+{
+Num  = Sc.nextInt();
+int Check1 = (int)(Math.sqrt(Num));
+if(Num == Check1 * Check1)
+C = C + 1;
+}
+System.out.println(C);
+}
+}

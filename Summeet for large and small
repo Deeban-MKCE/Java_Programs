@@ -1,0 +1,24 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		String in1 = "2531";
+		String in2 = "4562";
+	    String in3 = "2472";
+		char a1[] = in1.toCharArray();
+		char a2[] = in2.toCharArray();
+		char a3[] = in3.toCharArray();
+		Arrays.sort(a1);
+		Arrays.sort(a2);
+		Arrays.sort(a3);
+		int m1 = Integer.valueOf(a1[0]+""+a1[1]);
+		int m2 = Integer.valueOf(a2[0]+""+a2[1]);
+		int m3 = Integer.valueOf(a3[0]+""+a3[1]);
+		int Sres = m1 + m2 + m3;
+		int mm1 = Integer.valueOf(a1[a1.length -1]+""+a1[a1.length -2]);
+		int mm2 = Integer.valueOf(a2[a2.length -1]+""+a2[a2.length -2]);
+		int mm3 = Integer.valueOf(a3[a3.length -1]+""+a3[a3.length -2]);
+		int Lres = mm1 + mm2 + mm3;
+		System.out.println(Sres + "\n" + Lres);
+	}
+}

@@ -1,0 +1,30 @@
+import java.util.*;
+public class palindrome 
+{
+	public static void main(String[] args) 
+	{
+		int Res = 0;
+		String s = "Template";
+		s = s.toLowerCase();
+		char arr[] = s.toCharArray();
+		Dictionary d = new Hashtable();
+		for(int i=0;i<s.length();i++)
+		{
+			if(d.get(arr[i]) == null)
+				d.put(arr[i],1);
+			else
+				d.put(arr[i],(int)d.get(arr[i])+1);
+		}
+		for(Enumeration i=d.elements();i.hasMoreElements();)
+		{
+			int Count = (int)i.nextElement();
+			if(Count>=2)
+				Res = Res + ((Count/2)*2);
+		}
+		if(Res<s.length() && Res!=0)
+			Res = Res + 1;
+		else if(Res==0)
+			Res = -1;
+		System.out.println(Res);
+	}
+}
